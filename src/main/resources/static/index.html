@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>公交灰度实验服务 · R1/R2/R3</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="logo">🚌</span><span>公交灰度实验<br/>评审控制台</span></div>
+    <nav class="nav" id="nav">
+      <button data-tab="overview" class="active">📊 试点总览</button>
+      <button data-tab="registry">📝 实验登记与冻结</button>
+      <button data-tab="network">🕸️ 网络图与设计选择</button>
+      <button data-tab="assignment">🎲 随机分配</button>
+      <button data-tab="exposure">🧭 暴露路径台账</button>
+      <button data-tab="support">🧱 共同支持</button>
+      <button data-tab="analysis">📈 客流结果估计</button>
+      <button data-tab="guardrails">🚧 投诉/满载护栏</button>
+      <button data-tab="review">🔍 离线审阅</button>
+      <button data-tab="expansion">✅ 扩围证据</button>
+    </nav>
+    <div class="side-foot">
+      <div><a href="/swagger-ui.html" target="_blank">Swagger / OpenAPI ↗</a></div>
+      <div style="margin-top:6px"><a href="/logout">退出登录</a></div>
+      <div class="muted" style="margin-top:8px">虚构样例 · 数据均为合成</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <div class="title" id="top-title">试点总览</div>
+        <div class="sub" id="top-sub">实验 PILOT-R123-202606 · 2026-06-01 ~ 2026-06-28 · 种子 TSP-PILOT-2026-06-01</div>
+      </div>
+      <div class="userchip">
+        <div class="avatar" id="avatar">?</div>
+        <div>
+          <div id="username" style="font-weight:700">…</div>
+          <div class="muted small" id="roles"></div>
+        </div>
+      </div>
+    </header>
+
+    <section class="content">
+      <div id="global-banner"></div>
+
+      <div class="tab-panel active" id="tab-overview"></div>
+      <div class="tab-panel" id="tab-registry"></div>
+      <div class="tab-panel" id="tab-network"></div>
+      <div class="tab-panel" id="tab-assignment"></div>
+      <div class="tab-panel" id="tab-exposure"></div>
+      <div class="tab-panel" id="tab-support"></div>
+      <div class="tab-panel" id="tab-analysis"></div>
+      <div class="tab-panel" id="tab-guardrails"></div>
+      <div class="tab-panel" id="tab-review"></div>
+      <div class="tab-panel" id="tab-expansion"></div>
+    </section>
+  </main>
+</div>
+
+<div class="modal-back" id="modal-back">
+  <div class="modal" id="modal"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+services:
+  db:
+    image: postgres:18
+    container_name: transit-pilot-db
+    environment:
+      POSTGRES_DB: ccdev
+      POSTGRES_USER: ccdev
+      POSTGRES_PASSWORD: ccdev
+      TZ: Asia/Shanghai
+    # 宿主机已装 PostgreSQL 时避免 5432 冲突，对外用 5433
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ccdev -d ccdev"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: transit-pilot-app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/ccdev
+      DB_USER: ccdev
+      DB_PASSWORD: ccdev
+      SERVER_PORT: "8080"
+      TZ: Asia/Shanghai
+    ports:
+      - "8080:8080"
+
+volumes:
+  pgdata:
